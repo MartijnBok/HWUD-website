@@ -1,0 +1,43 @@
+
+#map {
+ height: 500px;
+ width : 100%;
+}
+
+
+
+
+
+.nav-item{
+  font-size: 1em;
+  font-family: Optima, sans-serif;
+}
+
+.col-sm{
+margin-left: 10px;
+word-break: break-all;
+
+}
+
+.title{
+  text-align: center;
+}
+
+.h5{
+word-break: break-all;
+}
+
+.container-fluid{
+  background-color: #F0F0F0;
+  background-blend-mode: lighten;
+}
+
+.contact{
+background-color: #83b5ab;
+}
+
+
+
+#cae3cc
+#83b5ab
+#8cb28f

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" class="css">
+  <title>Mississippi river delta & Venetian lagoon</title>
+
+
+  <link rel="source.js" href="">
+
+  <!-- navigatiebar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #83b5ab;" id="1">
+    <a class="navbar-brand" href="#1"><img src="data/logo.png" width="30" height="30" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+
+
+        <a class="nav-item nav-link active" href="#">           <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#">Geography  <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#">Statistics <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#10">Contact  <span class="sr-only">(current)</span></a>
+
+      </div>
+    </div>
+  </nav>
+
+</head>
+
+<body>
+
+<!-- webkaart -->
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js">
+
+    </script>
+
+  <script>
+   //initialize the map
+   var map = L.map('map').setView([29.962539, -90.058573], 9);
+   //Create baselayer - tiles
+    var backgroundMap = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+  attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  subdomains: 'abcd',
+  minZoom: 0,
+  maxZoom: 20,
+  ext: 'png'
+
+  });
+
+  backgroundMap.addTo(map);
+
+  // Create a marker first
+  var geojsonMarkerOptions = {
+   radius: 8,
+   fillColor: "#ff7800",
+   color: "#000",
+   weight: 1,
+   opacity: 1,
+   fillOpacity: 0.8
+  };
+  //create a empty geojson layer
+  var geojson = L.geoJson(null,{
+   pointToLayer: function (feature, latlng) {
+   return L.circleMarker(latlng, geojsonMarkerOptions);
+   }
+  }).addTo(map);
+
+  // new Http Request
+  var xhttp = new XMLHttpRequest();
+  // set the request method and data file
+  xhttp.open('GET', encodeURI("LeveedArea.geojason"));
+  //specify what must be done with the geojson data to the layer when request is succesfull
+  xhttp.onload = function() {
+  if (xhttp.readyState === 4) {
+  // add the json data to the geojson layer we created before!
+  geojson.addData(JSON.parse(xhttp.responseText));
+  } else {
+  alert('Request failed. Returned status of ' + xhttp.status);
+  }
+  };
+  // send the request
+  xhttp.send();
+
+    </script>
+
+
+
+
+
+
+
+
+
+<!-- Grid voor website -->
+<div class="container-fluid">
+<div class="row">
+  <!-- Mississippi -->
+  <div class="col-sm">
+<h1 class="title">Mississippi river delta</h1>
+<img src="data/afbeeldingen/mississippi 1.jpeg" class="rounded float-right img-fluid" style="width:800px;height:500px;" alt="...">
+   <h5 class="h5">Venetian lagoon introduction    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eos aliquid mollitia praesentium, totam repudiandae dolor neque vitae dignissimos voluptatibus qui beatae amet, doloremque sequi corporis quas expedita ipsam quod delectus quo similique, et. Nisi obcaecati, ut soluta a perspiciatis omnis ipsa assumenda nostrum corporis. Culpa modi, eveniet assumenda fugit.</h5>
+
+  </div>
+
+  <!-- Venice -->
+  <div class="col-sm">
+    <h1 class ="title">Venetian lagoon</h1>
+<img src="data/afbeeldingen/venetian lagoon/venice 1.jpg" class="rounded float-right img-fluid" style="width:800px;height:500px;" alt="...">
+   <h5 class="h5">Venetian lagoon introduction     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, odit deleniti nobis pariatur incidunt minus officia, veritatis voluptatibus amet illum cumque adipisci sint quod atque accusamus. Quidem numquam saepe, odio, quod totam minus neque sapiente consequatur unde mollitia fugit odit quo. Aut aperiam nesciunt, temporibus cumque quos culpa iusto veniam?</h5>
+
+
+
+  </div>
+</div>
+</div>
+</body>
+
+
+
+
+<!-- Contact informtation & Footer -->
+<footer id="10">
+  <address>
+    <strong>Institute for Environmental Studies (IVM)</strong><br>
+    <br>Aeres Hogeschool Almere </br>
+    Stadhuisstraat 18 <br>
+    1315 HC Almere, The Netherlands<br>
+     Phone: t +31- 088 020 6300
+
+
+  </address>
+
+  <address>
+    <strong>Martijn Bokdam</strong><br>
+    <a href="mailto:#">3026090@aeres.nl</a>
+  </address>
+
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+</html>

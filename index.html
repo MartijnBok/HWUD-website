@@ -9,12 +9,13 @@
   <link rel="stylesheet" href="style.css" class="css">
   <title>Mississippi river delta & Venetian lagoon</title>
 
+  <meta name="description" content="What are the differences between The Mississippi River Delta and The Venetian lagoon? How do they compare? Which problems do they face and what does their future look like?">
 
   <link rel="source.js" href="">
 
   <!-- navigatiebar -->
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #83b5ab;" id="1">
-    <a class="navbar-brand" href="#1"><img src="data/logo.png" width="30" height="30" alt=""></a>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #83b5ab;" id="1">
+    <a class="navbar-brand" href="#1"><img src="img/logo.png" width="30" height="30" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,10 +23,11 @@
       <div class="navbar-nav">
 
 
-        <a class="nav-item nav-link active" href="#">           <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link active" href="#">Geography  <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link active" href="#">Statistics <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link active" href="#10">Contact  <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#2">Introduction <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#3">Statistics   <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#4"> Geography / History   <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#5">Threats    <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active" href="#10">Contact    <span class="sr-only">(current)</span></a>
 
       </div>
     </div>
@@ -35,6 +37,10 @@
 
 <body>
 
+<button type="button" class="btn btn-dark">Mississippi</button>
+<button type="button" class="btn btn-dark">Venice</button>
+
+
 <!-- webkaart -->
   <div id="map"></div>
   <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js">
@@ -43,7 +49,7 @@
 
   <script>
    //initialize the map
-   var map = L.map('map').setView([29.962539, -90.058573], 9);
+   var map = L.map('map').setView([29.962539, -90.058573], 8);
    //Create baselayer - tiles
     var backgroundMap = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -67,15 +73,19 @@
   };
   //create a empty geojson layer
   var geojson = L.geoJson(null,{
-   pointToLayer: function (feature, latlng) {
-   return L.circleMarker(latlng, geojsonMarkerOptions);
-   }
+    style: function (feature) {
+      return {
+        color: "#804333"
+      }
+
+    }
+
   }).addTo(map);
 
   // new Http Request
   var xhttp = new XMLHttpRequest();
   // set the request method and data file
-  xhttp.open('GET', encodeURI("LeveedArea.geojason"));
+  xhttp.open('GET', encodeURI("Polygon test.geojson"));
   //specify what must be done with the geojson data to the layer when request is succesfull
   xhttp.onload = function() {
   if (xhttp.readyState === 4) {
@@ -99,27 +109,114 @@
 
 
 <!-- Grid voor website -->
-<div class="container-fluid">
+<div class="container-fluid" id="2">
 <div class="row">
   <!-- Mississippi -->
   <div class="col-sm">
 <h1 class="title">Mississippi river delta</h1>
-<img src="data/afbeeldingen/mississippi 1.jpeg" class="rounded float-right img-fluid" style="width:800px;height:500px;" alt="...">
-   <h5 class="h5">Venetian lagoon introduction    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eos aliquid mollitia praesentium, totam repudiandae dolor neque vitae dignissimos voluptatibus qui beatae amet, doloremque sequi corporis quas expedita ipsam quod delectus quo similique, et. Nisi obcaecati, ut soluta a perspiciatis omnis ipsa assumenda nostrum corporis. Culpa modi, eveniet assumenda fugit.</h5>
+<img src="img/mississippi 2.png" class="rounded float-left img-fluid" style="max-width: 100%; max-height: 1000px;"  alt="...">
+   <h5 class="h5-L">The Mississippi River Delta Basin all of the land and shallow estuarine area between the two northernmost passes of the Mississippi River and the Gulf of Mexico. This area is also referred to as the Plaquemines-Balize or "bird's foot" delta, it is the 7th largest river delta on Earth. The Mississippi River is the largest river in North America.</h5>
 
   </div>
 
   <!-- Venice -->
   <div class="col-sm">
     <h1 class ="title">Venetian lagoon</h1>
-<img src="data/afbeeldingen/venetian lagoon/venice 1.jpg" class="rounded float-right img-fluid" style="width:800px;height:500px;" alt="...">
-   <h5 class="h5">Venetian lagoon introduction     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, odit deleniti nobis pariatur incidunt minus officia, veritatis voluptatibus amet illum cumque adipisci sint quod atque accusamus. Quidem numquam saepe, odio, quod totam minus neque sapiente consequatur unde mollitia fugit odit quo. Aut aperiam nesciunt, temporibus cumque quos culpa iusto veniam?</h5>
+<img src="img/venice 2.png" class="rounded float-right img-fluid" style="max-width: 100%;;" alt="...">
+   <h5 class="h5">The Venetian Lagoon (Italian: Laguna di Venezia) is an enclosed bay of the Adriatic Sea, in northern Italy, in which the city of Venice is situated. It is connected to the Adriatic Sea by three inlets: Lido, Malamocco and Chioggia. Sited at the end of a largely enclosed sea, the lagoon experiences high variations in water level, which regularly flood much of Venice.</h5>
 
+  </div>
+</div>
+</div>
+
+<container class="misfacts" id="3">
+
+<div class="infogram-embed" data-id="aadfcb27-15af-4a3c-a567-7e949c7343e2" data-type="interactive" data-title="Teal Light"></div ><script>!function(e,t,s,i){var n="InfogramEmbeds",o=e.getElementsByTagName("script")[0],d=/^http:/.test(e.location)?"http:":"https:";if(/^\/{2}/.test(i)&&(i=d+i),window[n]&&window[n].initialized)window[n].process&&window[n].process();else if(!e.getElementById(s)){var r=e.createElement("script");r.async=1,r.id=s,r.src=i,o.parentNode.insertBefore(r,o)}}(document,0,"infogram-async","https://e.infogram.com/js/dist/embed-loader-min.js");</script><div style="padding:8px 0;font-family:Arial!important;font-size:13px!important;line-height:15px!important;text-align:center;border-top:1px solid #dadada;margin:0 30px"><a href="https://infogram.com/aadfcb27-15af-4a3c-a567-7e949c7343e2" style="color:#989898!important;text-decoration:none!important;" target="_blank">Teal Light</a><br><a href="https://infogram.com" style="color:#989898!important;text-decoration:none!important;" target="_blank" rel="nofollow">Infogram</a> </div>
+</container>
+
+
+
+<div class="container-fluid" id="4">
+<div class="row">
+  <!-- Mississippi -->
+  <div class="col-sm">
+   <h5 class="h5-L">The Mississippi River has had a significant effect on the landforms of coastal Louisiana. The entire area is the product of sediment deposition following the latest rise in sea level about 5,000 years ago. Each Mississippi River deltaic formed because of a shorter route to the Gulf of Mexico. After abandonment of an older delta lobe, which would cut off the primary supply of fresh water and sediment, an area would undergo compaction, subsidence, and erosion. The old delta lobe would begin to retreat as the gulf advanced, forming lakes and bays. At the same time a new delta lobe would begin its advance gulfward. This process has, over the past 5,000 years, caused the coastline of south Louisiana to advance into the Gulf of Mexico from 24 to 80 km, forming the present-day coastal plain.
+     <br></br>
+For the last 1200 years, sediment deposition has occurred primarily at the mouth of the Mississippi River's Plaquemines-Balize delta, in the area defined as the Mississippi River Delta Basin. In this way large volumes of sediment are required to create land area, as a consequence of this land is being lost in this delta more rapidly than it is being created. The Plaquemines-Balize delta lobe is slowly disappearing into the sea, further accelerated by the rising sea water levels.
+</h5>
+
+  </div>
+
+  <!-- Venice -->
+  <div class="col-sm">
+   <h5 class="h5-R">The lagoon of Venice originated nearly 6–7 thousand years ago during a transgression, when the rising sea ﬂooded the upper plain and outlined the coast in approximately the current shape. The early lagoon was smaller and it had eight inlets, against the three it has now. Originally, two main factors affected the lagoon basin: the continuous sediment supply ﬂowing into the lagoon and the noticeable coastal sedimentation, that led to a gradual silting of the tidal inlets. <br></br>These two processes caused the disappearing of the lagoon basin. Venetians began to carry out hydraulic works to preserve it. Mostly, the diversion of the major smaller rivers into the sea was started in 1400 and finished in 1600. They avoided making the lagoon a marshland, but also reversed its natural evolution. With the passing of time the sea began to prevail, enhanced by human interventions. Since 1800 man has changed the lagoon setting very intensely. Deep canals were dug and the sea openings were altered, sandflats were raised and permanently closed areas for ﬁsh farms were created. These changes have accelerated erosion and modified the ﬂora and fauna habitat. Furthermore, the pumping up of ground water has caused serious land subsidence.
+</h5>
+  </div>
+</div>
+</div>
+<br> <br>
+
+
+<div class="threats">
+  <h3 id="5"><center>Threats</center></h3>
+</div>
+
+
+
+<div class="row">
+  <!-- Mississippi Threats -->
+  <div class="col-sm">
+  <h4 class="h4">Natural threats </h4>
+     Subsidence: Because there isn't much river sedimentaion happening the land is sinking, futher accelerated by fluid extraction from the ground(oil,Gas & Water).<br><br>
+     Hurricanes and storms: Because of the location in the Golf of Mexico the delta suffers from a lot of storms and hurricanes.<br><br>
+     Sea level rise: The rising of the sea level caused by climate change has a big impact on the delta. Together with the subsidence and erosion by storms a big part of the delta is dissapearing into the ocean.
+
+<h4 class="h4">Man-made threats </h4>
+    Levees: The construction of levees to prevent flooding and damage has been incredibly succeful, however it disrupts natural landscapes and local ecosystems. Wetlands no longer get flooded because there isn't a connection to the river anymore, this also prevents sedimentation and halts land buildup. <br><br>
+    Navigation, gas and oil canals: The big gas and oil industry in the area benefitted from te placing of pipelines and the dredging of canals to make it easier for ships to navigate. These two activities have led to a 30-59% loss of wetlands in Louisiana between 1956 and 1978, furthermore it has made it easier for salt seawater to go inland.<br><br>
+    Upriver dams: The construction of resevoirs and dams further upriver has led to a decrease in de sediment load in the Mississippi River, they also stop a lot of nutrients that the delta ecosystems need. The sediment load in the river has decreased 50% since 1950.
+</div>
+
+<!-- Venice Threats -->
+<div class="col">
+<h4 class="h4">Natural threats </h4>
+   Acqua alta (High water): This phenomena occurs between autumn and spring and often causes flooding in the lagoon and in Venice itself. The astronomical high tides, caused primarily by the moon, line up with strong winds which travel up the Adriatic sea that acts like a funnel. Since the lagoon is located at the end of this the water level becomes much higher.<br><br>
+   Subsidence: The natural sinking of the land makes it easier for areas to overflow. <br><br>
+   Sea level rise: The rising of the sea level caused by climate change has a big impact on the delta, together with the subsidence the frequency of floods is increasing.
+
+<h4 class="h4">Man-made threats </h4>
+  Hydraulics: Since the 15th century man has drastically altered the landscape in and around the Venetian lagoon. Rivers have been diverted to avoid filling te lagoon with sand and gravel from higher areas. During the 1930's enormous land reclamation efforts were carried out through polderisation, just like the Dutch had been doing for a long time.The goal was to create vast new agricultural areas using a system of dykes and pumping stations. Unfortunately this has led to the loss of vast amounts of natural wetlands. <br><br>
+  Non-indigenous species: Following research it has been shown that the Venetian Lagoon is a area where a lot of exotic and non-indigenous species enter the Mediterranean Sea.<br><br>
+  Pollution: The lagoon has had relatively high levels of pullution for a long time, especially in the 2nd half of the 1980's. There have been large phytoplankton and macroalgae booms which seriously harm the water quality and especially fish.
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid" >
+<div class="row">
+
+  <div class="col-sm">
+<img src="img/mississippi river flooding.jpg" class="rounded float-left img-fluid" style="max-width: 450%; max-height: 400px;"
+  </div>
+  <div class="col-sm-V">
+<img src="img/venice flood.jpg" class="rounded float-right img-fluid" style="max-width: 450%; max-height: 400px;" >
 
 
   </div>
 </div>
 </div>
+
+
+
+
+<br><br>
+<img class="gif" src="img/logo-GIF.gif" height="100px">
+
+
+
+
+
 </body>
 
 

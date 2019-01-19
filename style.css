@@ -51,7 +51,11 @@ background-color: #83b5ab;
 
 .title2{
   background-color: #cae3cc;
+  text-align: center;
+  word-break: normal;
+  margin: 40px;
 }
+
 
 #cae3cc
 #83b5ab
@@ -74,15 +78,10 @@ word-break: break;
 
 .adress{
   text-align: justify;
-  word-break: normal;
+  word-break: break-all;
 }
 
-.title2{
-  text-align: center;
-  margin: 40px;
-}
 
 .afwisseling{
-
 background-color: #8cb28f;
 }
